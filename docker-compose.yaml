@@ -1,0 +1,28 @@
+version: '2.24'
+
+services:
+  flaskapp:
+    build: 
+      context: ./app
+      dockerfile: Dockerfile
+    container_name: flaskapp
+    ports:
+      - "8000:8000"  
+    networks:
+      - wsgi-net 
+
+  mynginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: mynginx
+    ports:
+      - "8090:80"  
+    networks:
+      - wsgi-net  
+    depends_on:
+      - flaskapp
+
+networks:
+  wsgi-net:
+    driver: bridge
