@@ -1,5 +1,5 @@
 # wsgi-template
-## Build and Run Step by Step :
+## Build and Run Step by Step 
 
  1-Build images and network 
 
